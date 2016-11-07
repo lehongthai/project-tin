@@ -8,7 +8,7 @@ class Post extends Model {
 
 	protected $fillable = ['name', 'alias', 'intro', 'keywords', 'description', 'content', 'image_link', 'image_thumnail', 'views', 'tags', 'views', 'user_id', 'cate_id'];
 
-	public $timestamps = false;
+	//public $timestamps = false;
 
 	public static function getListTags()
 	{

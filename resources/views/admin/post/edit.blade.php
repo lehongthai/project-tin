@@ -1,6 +1,6 @@
 @extends('admin.master')
-@section('name', 'Category')
-@section('action', 'Edit')
+@section('name', 'Bài viết')
+@section('action', 'chỉnh sửa')
 @section('content')
     <div class="col-lg-7" style="padding-bottom:120px">
         <form action="{!! route('admin.post.getEdit') !!}" method="POST">
@@ -10,6 +10,14 @@
                 <label>Tiêu đề</label>
                 <input class="form-control" name="txtTitle" placeholder="Vui lòng nhập tiêu đề" value="{!! old('txtTitle', $data['title']) !!}" />
                 <div style="color:red">{!! $errors->first('txtTitle') !!}</div>
+            </div>
+            <div class="form-group">
+                <label>Category Parent</label>
+                <select class="form-control" name="cate_id">
+                    <option value="0">Please Choose Category</option>
+                    <?php cate_parent($parent, 0, '--', old('cate_id', $data['cate_id'])) ?>
+                </select>
+                <div style="color:red">{!! $errors->first('cate_id') !!}</div>
             </div>
             <div class="form-group">
                 <label>Ảnh hiển thị</label>

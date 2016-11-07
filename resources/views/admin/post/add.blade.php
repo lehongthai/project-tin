@@ -12,7 +12,7 @@
                 <div style="color:red">{!! $errors->first('txtTitle') !!}</div>
             </div>
             <div class="form-group">
-                <label>Category Parent</label>
+                <label>Category</label>
                 <select class="form-control" name="cate_id">
                     <option value="0">Please Choose Category</option>
                         <?php cate_parent($parent, 0, '--', old('cate_id')) ?>

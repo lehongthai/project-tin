@@ -23,6 +23,7 @@ class PostRequest extends Request {
 	public function rules()
 	{
 		return [
+			'cate_id' => 'required|exists:cates,id',
 			'txtTitle' => 'required|unique:posts,title',
 			'image_link' => 'required',
 			'txtIntro' => 'required',
@@ -33,6 +34,8 @@ class PostRequest extends Request {
 	public function messages()
 	{
 		return [
+			'cate_id.required' => 'Vui lòng chọn Category',
+			'cate_id.exists' => 'Category không tồn tại',
 			'txtTitle.required' => 'Vui lòng nhập tên bài',
 			'txtTitle.unique' => 'Bài viết đã tồn tại',
 			'image_link.required' => 'Vui lòng nhập ảnh hiển thị',

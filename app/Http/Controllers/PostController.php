@@ -5,6 +5,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Auth;
 use App\Tags;
+use App\Cate;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use App\Post;
@@ -12,7 +13,9 @@ class PostController extends Controller {
 
 	public function getList()
 	{
-		$data = Post::select('id', 'title', 'views', 'image_thumbnail')->orderBy('id', 'DESC')->get()->toArray();
+		$data = Post::leftjoin('cates', 'posts.cate_id', '=' , 'cates.id')
+						->select('posts.id', 'posts.image_thumbnail', 'posts.title as title', 'posts.views', 'posts.created_at', 'cates.name as cName')
+						->get()->toArray();
 		return view('admin.post.list', compact('data'));
 	}
 
@@ -56,6 +59,7 @@ class PostController extends Controller {
 		$post->image_link = $PostRequest->image_link;
 		$post->image_thumbnail = URL().'/public/upload/_thumbs/Images/'.$image_arr[$count-1];
 		$post->views = 0;
+		$post->cate_id = $PostRequest->cate_id;
 		$post->user_id = /*Auth::user()->id;*/ 1;
 
 		if($post->save()){
@@ -71,7 +75,8 @@ class PostController extends Controller {
 		if (isset($post) && $post != null && isset($post)) {
 			$data = $post->toArray();
 			$listTags = Post::getListTags();
-			return view('admin.post.edit', compact('data', 'listTags'));
+			$parent = Cate::select('id', 'name', 'parent_id')->get()->toArray();
+			return view('admin.post.edit', compact('data', 'listTags', 'parent'));
 		}
 		$notic = ['level' => 'danger', 'flash_message' => 'Không có thông tin'];
 		return redirect()->route('admin.post.list')->with($notic);
@@ -95,12 +100,15 @@ class PostController extends Controller {
 		$id = $request->id;
 		$this->validate($request, 
 								[
+								'cate_id' => 'required|exists:cates,id',
 								'txtTitle' => "required|unique:posts,title,$id",
 								'image_link' => 'required',
 								'txtIntro' => 'required',
 								'txtContent' => 'required'
 								],
 								[
+								'cate_id.required' => 'Vui lòng chọn Category',
+								'cate_id.exists' => 'Category không tồn tại',
 								'txtTitle.required' => 'Vui lòng nhập tên bài',
 								'txtTitle.unique' => 'Bài viết đã tồn tại',
 								'image_link.required' => 'Vui lòng nhập ảnh hiển thị',
@@ -123,6 +131,7 @@ class PostController extends Controller {
 			$post->image_link = $request->image_link;
 			$post->image_thumbnail = URL().'/public/upload/_thumbs/Images/'.$image_arr[$count-1];
 			$post->views = 0;
+			$post->cate_id = $request->cate_id;
 			$post->user_id = /*Auth::user()->id;*/ 1;
 			if($post->save()){
 				$message = ['level' => 'success', 'flash_message' => 'Cập nhật thành công  '.$request->txtTitle];
