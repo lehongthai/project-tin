@@ -1,11 +1,15 @@
 @extends('admin.master')
-@section('name', 'About')
+@section('name', 'SEO')
 @section('action', 'Tạo Mới')
 @section('content')
 
     <div class="col-lg-7" style="padding-bottom:120px">
         <form action="{!! route('admin.about.getAdd') !!}" method="POST">
             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+            <div class="form-group">
+                <label>Tiêu Đề</label>
+                <input class="form-control" name="txtTitle" placeholder="Nhập Tiêu Đề" value="{!! old('txtTitle') !!}" />
+            </div>
             <div class="form-group">
                 <label>Keywords</label>
                 <input class="form-control" name="txtKeywords" placeholder="Please Enter Keywords" value="{!! old('txtKeywords') !!}" />
@@ -15,11 +19,9 @@
                 <textarea class="form-control" rows="3" name="txtDescription">{!! old('txtDescription') !!}</textarea>
             </div>
             <div class="form-group">
-                <label>Ảnh Chính</label>
+                <label>Icon</label>
                 <div class="col-xs-12 thumbnail">
                     <img src="{!! old('images') !!}" id="avatar">
-                    <hr>
-                    <input class="form-control" name="txtAltImage" placeholder="Chú thích ảnh" value="{!! old('txtAltImage') !!}"  />
                 </div>
                 <input type="hidden" name="images" id="link_avatar" value="{!! old('images') !!}" >
                 <button type="button" class="btn btn-large btn-block btn-default" onclick="BrowseServer();">Chọn Ảnh</button>

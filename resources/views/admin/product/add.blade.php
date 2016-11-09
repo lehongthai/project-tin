@@ -1,14 +1,14 @@
 @extends('admin.master')
-@section('name', 'Product')
-@section('action', 'Create')
+@section('name', 'Sản Phẩm')
+@section('action', 'Thêm Mới')
 @section('content')
 <form action="{!! route('admin.product.postAdd') !!}" method="POST" enctype="multipart/form-data">
     <div class="col-lg-7" style="padding-bottom:120px">
         <input type="hidden" name="_token" id="input" class="form-control" value="{!! csrf_token() !!}">
         <div class="form-group">
-            <label>Mục Sản Phẩm</label>
+            <label>Danh Mục Sản Phẩm</label>
             <select class="form-control" name="cate_id">
-                <option value="0">Please Choose Category</option>
+                <option value="0">Vui Lòng Chọn</option>
                 <?php cate_parent($parent, 0, '--', old('cate_id')) ?>
             </select>
             <div style="color:red">{!! $errors->first('cate_id') !!}</div>

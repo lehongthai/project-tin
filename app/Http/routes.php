@@ -55,6 +55,9 @@ Route::group(['prefix' => 'admin'/*, 'middleware' => 'auth'*/], function (){
 		Route::get('delete/{id?}', ['as' => 'admin.about.getDelete', 'uses' => 'AboutController@getDelete']);
 		Route::get('edit/{id?}', ['as' => 'admin.about.getEdit', 'uses' => 'AboutController@getEdit']);
 		Route::post('edit/{id?}', ['as' => 'admin.about.postEdit', 'uses' => 'AboutController@postEdit']);
+		Route::get('listshop', ['as' => 'admin.about.getListShop', 'uses' => 'AboutController@getListShop']);
+		Route::get('editshop/{id?}', ['as' => 'admin.about.getEditShop', 'uses' => 'AboutController@getEditShop']);
+		Route::post('editshop/{id?}', ['as' => 'admin.about.postEditShop', 'uses' => 'AboutController@postEditShop']);
 	});
 
 	Route::group(['prefix' => 'tags'], function () {

@@ -9,17 +9,26 @@
     <title>public/admin - Khoa Phạm</title>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <!-- Bootstrap Core CSS -->
-    <link href="{!! url('public/admin') !!}/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    {{-- <link href="{!! url('public/admin') !!}/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
+    <link href="{!! url('public/tin') !!}/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="{!! url('public/admin') !!}/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    {{-- <link href="{!! url('public/admin') !!}/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet"> --}}
+
+
+    <link href="{!! url('public/tin') !!}/fonts/css/font-awesome.min.css" />
+    <link href="{!! url('public/tin') !!}/css/animate.min.css" rel="stylesheet" />
+    <link href="{!! url('public/tin') !!}/css/custom.css" rel="stylesheet" />
+    <link href="{!! url('public/tin') !!}/css/maps/jquery-jvectormap-2.0.1.css"  rel="stylesheet"/>
+    <link href="{!! url('public/tin') !!}/css/icheck/flat/green.css" rel="stylesheet" />
+    <link href="{!! url('public/tin') !!}/css/floatexamples.css" rel="stylesheet" />
     <link href="{!! url('public/admin') !!}/dist/css/select2.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="{!! url('public/admin') !!}/dist/css/sb-admin-2.css" rel="stylesheet">
+    {{-- <link href="{!! url('public/admin') !!}/dist/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="{!! url('public/admin') !!}/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="{!! url('public/admin') !!}/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> --}}
 
     <!-- DataTables CSS -->
     <link href="{!! url('public/admin') !!}/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
@@ -80,7 +89,7 @@
                             <a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Category<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Danh Mục Sản Phẩm<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{!! URL::route('admin.cate.list') !!}">List Category</a>
@@ -128,10 +137,10 @@
                             <a href="#"><i class="fa fa-cube fa-fw"></i>About<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{!! URL::route('admin.about.getList') !!}">Danh sách</a>
+                                    <a href="{!! URL::route('admin.about.getList') !!}">SEO</a>
                                 </li>
                                 <li>
-                                    <a href="{!! URL::route('admin.about.getAdd') !!}">Thêm mới</a>
+                                    <a href="{!! URL::route('admin.about.getListShop') !!}">Shop Location</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -176,6 +185,9 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
+    <script src="{!! url('public/tin') !!}/js/jquery.min.js" ></script>
+    <script src="{!! url('public/admin') !!}/js/nprogress.js" ></script>
+
     <script src="{!! url('public/admin') !!}/bower_components/jquery/dist/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->

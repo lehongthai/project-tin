@@ -1,14 +1,14 @@
 @extends('admin.master')
-@section('name', 'Bài viết')
+@section('name', 'Bài Viết')
 @section('action', 'Danh sách')
 @section('content')
     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
         <thead>
             <tr align="center">
                 <th style="width: 8%">Ảnh</th>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Views</th>
+                <th>Tiêu Đề</th>
+                <th>Danh Mục</th>
+                <th>Lượt Xem</th>
                 <th>Edit</th>
                 <th>Delete</th>   
             </tr>

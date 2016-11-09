@@ -1,6 +1,6 @@
 @extends('admin.master')
-@section('name', 'Bài viết')
-@section('action', 'chỉnh sửa')
+@section('name', 'Bài Viết')
+@section('action', 'Cập Nhật')
 @section('content')
     <div class="col-lg-7" style="padding-bottom:120px">
         <form action="{!! route('admin.post.getEdit') !!}" method="POST">
@@ -12,9 +12,9 @@
                 <div style="color:red">{!! $errors->first('txtTitle') !!}</div>
             </div>
             <div class="form-group">
-                <label>Category Parent</label>
+                <label>Danh Mục Bài Viết</label>
                 <select class="form-control" name="cate_id">
-                    <option value="0">Please Choose Category</option>
+                    <option value="0">Vui Lòng Chọn</option>
                     @foreach($parent as $catePost)
                     <option value="{!! $catePost['id'] !!}" @if(old('cate_id') == $catePost['id'] || $data['cate_id'] == $catePost['id']) selected  @endif>{!! $catePost['name'] !!}</option>
                     @endforeach
@@ -25,6 +25,8 @@
                 <label>Ảnh hiển thị</label>
                 <div class="col-xs-12 thumbnail">
                     <img src="{!! old('image_link', $data['image_link']) !!}" id="image_link">
+                    <hr>
+                <input class="form-control" name="txtAltImage" placeholder="Chú thích ảnh" value="{!! old('txtAltImage', $data['alt']) !!}"  />
                 </div>
                 <input type="hidden" name="image_link" id="link_avatar" value="{!! old('image_link', $data['image_link']) !!}" >
                 <button type="button" class="btn btn-large btn-block btn-default" onclick="BrowseServer();">Chọn Ảnh</button>

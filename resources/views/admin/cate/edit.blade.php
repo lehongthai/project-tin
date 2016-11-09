@@ -1,33 +1,33 @@
 @extends('admin.master')
-@section('name', 'Category')
-@section('action', 'Edit')
+@section('name', 'Danh Mục Sản Phẩm')
+@section('action', 'Cập Nhập')
 @section('content')
                     <div class="col-lg-7" style="padding-bottom:120px">
                         <form action="{!! route('admin.cate.getEdit') !!}" method="POST">
                         <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                         <input type="hidden" name="id" value="{!! $data['id'] !!}">
                             <div class="form-group">
-                                <label>Category Parent</label>
+                                <label>Chọn Danh Mục Cha</label>
                                 <select class="form-control" name="parent_id">
-                                    <option value="0">Please Choose Category</option>
+                                    <option value="0">Vui Lòng Chọn</option>
                                     <?php cate_parent($parent, 0, '--', $data['parent_id']) ?>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Category Name</label>
-                                <input class="form-control" name="txtCateName" placeholder="Please Enter Category Name" value="{!! old('txtCateName', $data['name']) !!}" />
+                                <label>Tên Danh Mục</label>
+                                <input class="form-control" name="txtCateName" placeholder="Tên Danh Mục" value="{!! old('txtCateName', $data['name']) !!}" />
                                 <div style="color:red">{!! $errors->first('txtCateName') !!}</div>
                             </div>
                             <div class="form-group">
-                                <label>Category Order</label>
-                                <input class="form-control" name="txtOrder" placeholder="Please Enter Category Order" value="{!! old('txtOrder', $data['order']) !!}" />
+                                <label>Vị Trí</label>
+                                <input class="form-control" name="txtOrder" placeholder="Vị Trí" value="{!! old('txtOrder', $data['order']) !!}" />
                             </div>
                             <div class="form-group">
-                                <label>Category Keywords</label>
-                                <input class="form-control" name="txtKeywords" placeholder="Please Enter Category Keywords" value="{!! old('txtKeywords', $data['keywords']) !!}" />
+                                <label>Keywords</label>
+                                <input class="form-control" name="txtKeywords" placeholder="Keywords" value="{!! old('txtKeywords', $data['keywords']) !!}" />
                             </div>
                             <div class="form-group">
-                                <label>Category Description</label>
+                                <label>Description</label>
                                 <textarea class="form-control" rows="3" name="txtDescription">{!! old('txtDescription', $data['description']) !!}</textarea>
                             </div>
                             

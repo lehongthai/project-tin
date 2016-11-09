@@ -1,6 +1,6 @@
 @extends('admin.master')
-@section('name', 'Product')
-@section('action', 'Edit')
+@section('name', 'Sản Phẩm')
+@section('action', 'Cập Nhật')
 @section('content')
 <form action="{!! url('admin/product/edit') !!}" method="POST" name="editProduct">
                     <!-- /.col-lg-12 -->
@@ -8,10 +8,9 @@
                         <input type="hidden" name="_token" id="input" class="form-control" value="{!! csrf_token() !!}">
                         <input type="hidden" name="id" class="form-control" value="{!! $data['id'] !!}">
                         <div class="form-group">
-                        <?php   ?>
-                                <label>Category Parent</label>
+                                <label>Danh Mục Sản Phẩm</label>
                                 <select class="form-control" name="cate_id">
-                                    <option value="0">Please Choose Category</option>
+                                    <option value="0">Vui Lòng Chọn</option>
                                     <?php cate_parent($parent, 0, '--', old('cate_id', $data['cate_id'])) ?>
                                 </select>
                                 <div style="color:red">{!! $errors->first('cate_id') !!}</div>

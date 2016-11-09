@@ -57,6 +57,7 @@ class PostController extends Controller {
 		$post->description = $PostRequest->txtDescription;
 		$post->tags = implode(',', $listTagsOld);
 		$post->image_link = $PostRequest->image_link;
+		$post->alt = $PostRequest->txtAltImage;
 		$post->image_thumbnail = URL().'/public/upload/_thumbs/Images/'.$image_arr[$count-1];
 		$post->views = 0;
 		$post->cate_id = $PostRequest->cate_id;
@@ -129,6 +130,7 @@ class PostController extends Controller {
 			$post->description = $request->txtDescription;
 			$post->tags = implode(',', $listTagsOld);
 			$post->image_link = $request->image_link;
+			$post->alt = $request->txtAltImage;
 			$post->image_thumbnail = URL().'/public/upload/_thumbs/Images/'.$image_arr[$count-1];
 			$post->views = 0;
 			$post->cate_id = $request->cate_id;

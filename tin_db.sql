@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2016 at 07:23 AM
+-- Generation Time: Nov 09, 2016 at 05:22 PM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -32,15 +32,15 @@ CREATE TABLE IF NOT EXISTS `abouts` (
   `meta_desc` varchar(255) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   `image_thumb` varchar(255) DEFAULT NULL,
-  `alt` varchar(255) DEFAULT NULL
+  `title` varchar(255) DEFAULT NULL
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `abouts`
 --
 
-INSERT INTO `abouts` (`id`, `meta_key`, `meta_desc`, `image`, `image_thumb`, `alt`) VALUES
-(1, '1', '1', 'http://localhost:8080/LeThai/Laravel/project-tin/public/upload/images/g1.jpg', 'http://localhost:8080/LeThai/Laravel/project-tin/public/upload/_thumbs/Images/g1.jpg', NULL);
+INSERT INTO `abouts` (`id`, `meta_key`, `meta_desc`, `image`, `image_thumb`, `title`) VALUES
+(1, '1', '1', 'http://localhost:8080/LeThai/Laravel/project-tin/public/upload/images/g1.jpg', 'http://localhost:8080/LeThai/Laravel/project-tin/public/upload/_thumbs/Images/g1.jpg', 'hdfg');
 
 -- --------------------------------------------------------
 
@@ -172,6 +172,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `tags` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `image_link` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `alt` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `image_thumbnail` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `views` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_id` int(10) unsigned NOT NULL,
@@ -184,8 +185,8 @@ CREATE TABLE IF NOT EXISTS `posts` (
 -- Dumping data for table `posts`
 --
 
-INSERT INTO `posts` (`id`, `title`, `alias`, `intro`, `content`, `keywords`, `description`, `tags`, `image_link`, `image_thumbnail`, `views`, `user_id`, `cate_id`, `created_at`, `updated_at`) VALUES
-(7, 'Test 1', 'test-1', 'item', '<p>item</p>\r\n', 'item', 'item', '53', 'http://localhost:8080/LeThai/Laravel/project-tin/public/upload/images/cac-con-choi-nha-bong-06-08-2015-1-780x585.jpg', 'http://localhost:8080/LeThai/Laravel/project-tin/public/upload/_thumbs/Images/cac-con-choi-nha-bong-06-08-2015-1-780x585.jpg', '0', 1, 1, NULL, '2016-11-07 10:35:19');
+INSERT INTO `posts` (`id`, `title`, `alias`, `intro`, `content`, `keywords`, `description`, `tags`, `image_link`, `alt`, `image_thumbnail`, `views`, `user_id`, `cate_id`, `created_at`, `updated_at`) VALUES
+(7, 'Test 1', 'test-1', 'item', '<p>item</p>\r\n', 'item', 'item', '53', 'http://localhost:8080/LeThai/Laravel/project-tin/public/upload/images/cac-con-choi-nha-bong-06-08-2015-1-780x585.jpg', 'ảnh mới', 'http://localhost:8080/LeThai/Laravel/project-tin/public/upload/_thumbs/Images/cac-con-choi-nha-bong-06-08-2015-1-780x585.jpg', '0', 1, 1, NULL, '2016-11-09 06:02:45');
 
 -- --------------------------------------------------------
 
@@ -251,6 +252,27 @@ INSERT INTO `product_images` (`id`, `image`, `image_thumb`, `alt`, `product_id`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `shop`
+--
+
+CREATE TABLE IF NOT EXISTS `shop` (
+  `id` int(11) NOT NULL,
+  `location` varchar(255) DEFAULT NULL,
+  `phone` varchar(12) DEFAULT NULL,
+  `tel` varchar(13) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `shop`
+--
+
+INSERT INTO `shop` (`id`, `location`, `phone`, `tel`, `email`) VALUES
+(1, '123 bình thạnh', '0123456789', '0123456789', 'admin@gmail.com');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tags`
 --
 
@@ -259,7 +281,7 @@ CREATE TABLE IF NOT EXISTS `tags` (
   `name` varchar(70) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `tags`
@@ -366,6 +388,12 @@ ALTER TABLE `product_images`
   ADD KEY `product_images_product_id_foreign` (`product_id`);
 
 --
+-- Indexes for table `shop`
+--
+ALTER TABLE `shop`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tags`
 --
 ALTER TABLE `tags`
@@ -423,10 +451,15 @@ ALTER TABLE `products`
 ALTER TABLE `product_images`
   MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
 --
+-- AUTO_INCREMENT for table `shop`
+--
+ALTER TABLE `shop`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `tags`
 --
 ALTER TABLE `tags`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=56;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=54;
 --
 -- AUTO_INCREMENT for table `users`
 --

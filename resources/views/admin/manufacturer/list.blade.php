@@ -1,6 +1,6 @@
 @extends('admin.master')
-@section('name', 'Category')
-@section('action', 'List')
+@section('name', 'Danh Mục Nhà Sản Xuất')
+@section('action', 'Danh Sách')
 @section('content')
 
 @if(Session::has('flash_message_action'))
@@ -28,7 +28,7 @@
                         <thead>
                             <tr align="center">
                                 <th>STT</th>
-                                <th>Name</th>
+                                <th>Tên</th>
                                 <th>Delete</th>
                             </tr>
                         </thead>

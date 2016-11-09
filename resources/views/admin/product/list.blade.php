@@ -1,15 +1,15 @@
 @extends('admin.master')
-@section('name', 'Product')
-@section('action', 'List')
+@section('name', 'Sản Phẩm')
+@section('action', 'Danh Sách')
 @section('content')
     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
         <thead>
             <tr align="center">
                 <th>STT</th>
-                <th>Name</th>
+                <th>Tên</th>
                 <th>Danh Mục</th>
-                <th>Price</th>
-                <th>Date</th>
+                <th>Giá</th>
+                <th>Ngày</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>

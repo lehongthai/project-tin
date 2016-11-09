@@ -1,11 +1,15 @@
 @extends('admin.master')
-@section('name', 'About')
+@section('name', 'SEO')
 @section('action', 'Cập nhật')
 @section('content')
     <div class="col-lg-7" style="padding-bottom:120px">
         <form action="{!! route('admin.about.getEdit') !!}" method="POST">
         <input type="hidden" name="_token" value="{!! csrf_token() !!}">
         <input type="hidden" name="id" value="{!! $data['id'] !!}">
+        <div class="form-group">
+                <label>Tiêu Đề</label>
+                <input class="form-control" name="txtTitle" placeholder="Nhập Tiêu Đề" value="{!! old('txtTitle', $data['title']) !!}" />
+            </div>
             <div class="form-group">
                 <label>Keywords</label>
                 <input class="form-control" name="txtKeywords" placeholder="Please Enter Keywords" value="{!! old('txtKeywords', $data['meta_key']) !!}" />

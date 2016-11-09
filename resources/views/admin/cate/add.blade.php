@@ -1,6 +1,6 @@
 @extends('admin.master')
-@section('name', 'Category')
-@section('action', 'Create')
+@section('name', 'Danh Mục Sản Phẩm')
+@section('action', 'Thêm Mới')
 @section('content')
 @if(count($errors) > 0)
 <div class="alert alert-danger">
@@ -15,27 +15,27 @@
                         <form action="{!! route('admin.cate.getAdd') !!}" method="POST">
                         <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                             <div class="form-group">
-                                <label>Category Parent</label>
+                                <label>Chọn Danh Mục Cha</label>
                                 <select class="form-control" name="parent_id">
-                                    <option value="0">Please Choose Category</option>
+                                    <option value="0">Vui Lòng Chọn</option>
                                     <?php cate_parent($parent) ?>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Category Name</label>
-                                <input class="form-control" name="txtCateName" placeholder="Please Enter Category Name" value="{!! old('txtCateName') !!}" />
+                                <label>Tên Danh Mục</label>
+                                <input class="form-control" name="txtCateName" placeholder="Tên Danh Mục" value="{!! old('txtCateName') !!}" />
                                 <div>{!! $errors->first('txtCateName') !!}</div>
                             </div>
                             <div class="form-group">
-                                <label>Category Order</label>
-                                <input class="form-control" name="txtOrder" placeholder="Please Enter Category Order" value="{!! old('txtOrder') !!}" />
+                                <label>Vị Trí</label>
+                                <input class="form-control" name="txtOrder" placeholder="Vị Trí" value="{!! old('txtOrder') !!}" />
                             </div>
                             <div class="form-group">
-                                <label>Category Keywords</label>
-                                <input class="form-control" name="txtKeywords" placeholder="Please Enter Category Keywords" value="{!! old('txtKeywords') !!}" />
+                                <label>Keywords</label>
+                                <input class="form-control" name="txtKeywords" placeholder="Keywords" value="{!! old('txtKeywords') !!}" />
                             </div>
                             <div class="form-group">
-                                <label>Category Description</label>
+                                <label>Description</label>
                                 <textarea class="form-control" rows="3" name="txtDescription">{!! old('txtDescription') !!}</textarea>
                             </div>
                             <button type="submit" class="btn btn-default">Category Add</button>
