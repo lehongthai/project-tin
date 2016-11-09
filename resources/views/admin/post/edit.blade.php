@@ -15,7 +15,9 @@
                 <label>Category Parent</label>
                 <select class="form-control" name="cate_id">
                     <option value="0">Please Choose Category</option>
-                    <?php cate_parent($parent, 0, '--', old('cate_id', $data['cate_id'])) ?>
+                    @foreach($parent as $catePost)
+                    <option value="{!! $catePost['id'] !!}" @if(old('cate_id') == $catePost['id'] || $data['cate_id'] == $catePost['id']) selected  @endif>{!! $catePost['name'] !!}</option>
+                    @endforeach
                 </select>
                 <div style="color:red">{!! $errors->first('cate_id') !!}</div>
             </div>

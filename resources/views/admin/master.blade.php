@@ -83,10 +83,55 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Category<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{!! URL::route('admin.post.list') !!}">List Category</a>
+                                    <a href="{!! URL::route('admin.cate.list') !!}">List Category</a>
                                 </li>
                                 <li>
-                                    <a href="{!! URL::route('admin.post.getAdd') !!}">Add Category</a>
+                                    <a href="{!! URL::route('admin.cate.getAdd') !!}">Add Category</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Bài Viết<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{!! URL::route('admin.post.list') !!}">Danh Sách</a>
+                                </li>
+                                <li>
+                                    <a href="{!! URL::route('admin.post.getAdd') !!}">Thêm Mới</a>
+                                </li>
+                                <li>
+                                    <a href="{!! URL::route('admin.catepost.list') !!}">Danh Mục</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-cube fa-fw"></i>Sản Phẩm<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{!! URL::route('admin.product.list') !!}">Danh Sách</a>
+                                </li>
+                                <li>
+                                    <a href="{!! URL::route('admin.product.getAdd') !!}">Thêm Mới</a>
+                                </li>
+                                <li>
+                                    <a href="{!! URL::route('admin.tags.list') !!}">Thẻ</a>
+                                </li>
+                                <li>
+                                    <a href="{!! URL::route('admin.manufacturer.list') !!}">Nhà Sản Xuất</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-cube fa-fw"></i>About<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{!! URL::route('admin.about.getList') !!}">Danh sách</a>
+                                </li>
+                                <li>
+                                    <a href="{!! URL::route('admin.about.getAdd') !!}">Thêm mới</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -140,7 +185,7 @@
     <script src="{!! url('public/admin') !!}/bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="{!! url('public/admin') !!}/dist/js/sb-public/admin-2.js"></script>
+    <script src="{!! url('public/admin') !!}/dist/js/sb-admin-2.js"></script>
     {{-- My script --}}
     <script src="{!! url('public/admin') !!}/js/myscript.js"></script>
 
@@ -150,6 +195,9 @@
     <script src="{!! url('public/admin') !!}/js/select2.min.js"></script>
 <script type="text/javascript">
     $("#product_select").select2({
+        tags:true
+    });
+    $("#manufacturer_select").select2({
         tags:true
     });
 

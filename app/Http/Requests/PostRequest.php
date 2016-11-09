@@ -23,7 +23,7 @@ class PostRequest extends Request {
 	public function rules()
 	{
 		return [
-			'cate_id' => 'required|exists:cates,id',
+			'cate_id' => 'required|exists:category_post,id',
 			'txtTitle' => 'required|unique:posts,title',
 			'image_link' => 'required',
 			'txtIntro' => 'required',

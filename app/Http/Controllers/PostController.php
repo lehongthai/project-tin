@@ -5,7 +5,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Auth;
 use App\Tags;
-use App\Cate;
+use App\CatePost;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use App\Post;
@@ -13,8 +13,8 @@ class PostController extends Controller {
 
 	public function getList()
 	{
-		$data = Post::leftjoin('cates', 'posts.cate_id', '=' , 'cates.id')
-						->select('posts.id', 'posts.image_thumbnail', 'posts.title as title', 'posts.views', 'posts.created_at', 'cates.name as cName')
+		$data = Post::leftjoin('category_post', 'posts.cate_id', '=' , 'category_post.id')
+						->select('posts.id', 'posts.image_thumbnail', 'posts.title as title', 'posts.views', 'posts.created_at', 'category_post.name as cName')
 						->get()->toArray();
 		return view('admin.post.list', compact('data'));
 	}
@@ -22,7 +22,7 @@ class PostController extends Controller {
 	public function getAdd()
 	{
 		$listTags = Post::getListTags();
-		$parent = Cate::select('id', 'name', 'parent_id')->get()->toArray();
+		$parent = CatePost::select('id', 'name')->get()->toArray();
 		return view('admin.post.add', compact('listTags', 'parent'));
 	}
 
@@ -75,7 +75,7 @@ class PostController extends Controller {
 		if (isset($post) && $post != null && isset($post)) {
 			$data = $post->toArray();
 			$listTags = Post::getListTags();
-			$parent = Cate::select('id', 'name', 'parent_id')->get()->toArray();
+			$parent = CatePost::select('id', 'name')->get()->toArray();
 			return view('admin.post.edit', compact('data', 'listTags', 'parent'));
 		}
 		$notic = ['level' => 'danger', 'flash_message' => 'Không có thông tin'];
@@ -100,7 +100,7 @@ class PostController extends Controller {
 		$id = $request->id;
 		$this->validate($request, 
 								[
-								'cate_id' => 'required|exists:cates,id',
+								'cate_id' => 'required|exists:category_post,id',
 								'txtTitle' => "required|unique:posts,title,$id",
 								'image_link' => 'required',
 								'txtIntro' => 'required',
