@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 07, 2016 at 06:44 PM
+-- Generation Time: Nov 09, 2016 at 07:23 AM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -19,6 +19,49 @@ SET time_zone = "+00:00";
 --
 -- Database: `tin_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `abouts`
+--
+
+CREATE TABLE IF NOT EXISTS `abouts` (
+  `id` int(11) NOT NULL,
+  `meta_key` varchar(255) DEFAULT NULL,
+  `meta_desc` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `image_thumb` varchar(255) DEFAULT NULL,
+  `alt` varchar(255) DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `abouts`
+--
+
+INSERT INTO `abouts` (`id`, `meta_key`, `meta_desc`, `image`, `image_thumb`, `alt`) VALUES
+(1, '1', '1', 'http://localhost:8080/LeThai/Laravel/project-tin/public/upload/images/g1.jpg', 'http://localhost:8080/LeThai/Laravel/project-tin/public/upload/_thumbs/Images/g1.jpg', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category_post`
+--
+
+CREATE TABLE IF NOT EXISTS `category_post` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `meta_desc` varchar(255) DEFAULT NULL,
+  `meta_key` varchar(200) DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `category_post`
+--
+
+INSERT INTO `category_post` (`id`, `name`, `meta_desc`, `meta_key`) VALUES
+(1, 'Cate 1', 'Cate 1', 'Cate 1'),
+(2, 'Cate 2', 'Cate 2', 'Cate 2');
 
 -- --------------------------------------------------------
 
@@ -54,7 +97,30 @@ INSERT INTO `cates` (`id`, `name`, `alias`, `order`, `parent_id`, `keywords`, `d
 (22, 'Áo Đi Chơi', 'Ao-Di-Choi', 0, 15, 'Áo Đi Chơi', 'Áo Đi Chơi', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (23, 'Quần Đi Chơi', 'Quan-Di-Choi', 0, 15, 'Quần Đi Chơi', 'Quần Đi Chơi', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (24, 'Quần Đi Dạ Hội', 'Quan-Di-Da-Hoi', 0, 16, 'Quần Đi Dạ Hội', 'Quần Đi Dạ Hội', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(25, 'Áo Đi Dạ Hội', 'Ao-Di-Da-Hoi', 0, 16, 'Áo Đi Dạ Hội', 'Áo Đi Dạ Hội', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(25, 'Áo Đi Dạ Hội', 'ao-di-da-hoi', 0, 16, 'Áo Đi Dạ Hội', 'Áo Đi Dạ Hội', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `manufacturer`
+--
+
+CREATE TABLE IF NOT EXISTS `manufacturer` (
+  `id` int(11) NOT NULL,
+  `name` varchar(150) DEFAULT NULL,
+  `keywords` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `manufacturer`
+--
+
+INSERT INTO `manufacturer` (`id`, `name`, `keywords`, `description`) VALUES
+(1, 'Hãng 1', 'hang 1', 'hang 1'),
+(2, 'Hãng 2', 'hang 2', 'hang 2'),
+(5, 'Hãng 3', NULL, NULL),
+(6, 'Hãng 34', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -66,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `id` int(10) unsigned NOT NULL,
   `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -74,7 +140,9 @@ CREATE TABLE IF NOT EXISTS `migrations` (
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1);
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2016_08_13_063345_create_products_table', 2),
+(4, '2016_08_13_064404_create_product_images_table', 2);
 
 -- --------------------------------------------------------
 
@@ -117,7 +185,68 @@ CREATE TABLE IF NOT EXISTS `posts` (
 --
 
 INSERT INTO `posts` (`id`, `title`, `alias`, `intro`, `content`, `keywords`, `description`, `tags`, `image_link`, `image_thumbnail`, `views`, `user_id`, `cate_id`, `created_at`, `updated_at`) VALUES
-(7, 'Test 1', 'test-1', 'item', '<p>item</p>\r\n', 'item', 'item', '53', 'http://localhost:8080/LeThai/Laravel/project-tin/public/upload/images/cac-con-choi-nha-bong-06-08-2015-1-780x585.jpg', 'http://localhost:8080/LeThai/Laravel/project-tin/public/upload/_thumbs/Images/cac-con-choi-nha-bong-06-08-2015-1-780x585.jpg', '0', 1, 21, NULL, '2016-11-07 10:35:19');
+(7, 'Test 1', 'test-1', 'item', '<p>item</p>\r\n', 'item', 'item', '53', 'http://localhost:8080/LeThai/Laravel/project-tin/public/upload/images/cac-con-choi-nha-bong-06-08-2015-1-780x585.jpg', 'http://localhost:8080/LeThai/Laravel/project-tin/public/upload/_thumbs/Images/cac-con-choi-nha-bong-06-08-2015-1-780x585.jpg', '0', 1, 1, NULL, '2016-11-07 10:35:19');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE IF NOT EXISTS `products` (
+  `id` int(10) unsigned NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `alias` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `make` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `quantity` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `price` int(11) DEFAULT NULL,
+  `price_old` int(11) DEFAULT NULL,
+  `intro` text COLLATE utf8_unicode_ci,
+  `image_thumb` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `image_link` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `alt` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `content` longtext COLLATE utf8_unicode_ci,
+  `keywords` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tags` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_id` int(10) unsigned NOT NULL,
+  `cate_id` int(10) unsigned NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `alias`, `make`, `quantity`, `price`, `price_old`, `intro`, `image_thumb`, `image_link`, `alt`, `content`, `keywords`, `description`, `tags`, `user_id`, `cate_id`, `created_at`, `updated_at`) VALUES
+(2, 'Đồ 2', 'do-2', '2', '20', 20000, 0, 'ee', 'http://localhost:8080/LeThai/Laravel/project-tin/public/upload/_thumbs/Images/g1.jpg', 'http://localhost:8080/LeThai/Laravel/project-tin/public/upload/images/g1.jpg', 'eee', '<p>ee</p>\r\n', 'ee', 'ee', '41,43', 1, 20, '2016-11-08 09:11:38', '2016-11-08 09:11:38');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_images`
+--
+
+CREATE TABLE IF NOT EXISTS `product_images` (
+  `id` int(10) unsigned NOT NULL,
+  `image` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `image_thumb` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `alt` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `product_id` int(10) unsigned NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `product_images`
+--
+
+INSERT INTO `product_images` (`id`, `image`, `image_thumb`, `alt`, `product_id`, `created_at`, `updated_at`) VALUES
+(12, 'http://localhost:8080/LeThai/Laravel/project-tin/public/upload/images/cac-con-choi-nha-bong-06-08-2015-1-780x585.jpg', 'http://localhost:8080/LeThai/Laravel/project-tin/public/upload/_thumbs/Images/cac-con-choi-nha-bong-06-08-2015-1-780x585.jpg', 'anh 1', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(13, 'http://localhost:8080/LeThai/Laravel/project-tin/public/upload/images/g1.jpg', 'http://localhost:8080/LeThai/Laravel/project-tin/public/upload/_thumbs/Images/g1.jpg', 'anh 2', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(14, 'http://localhost:8080/LeThai/Laravel/project-tin/public/upload/images/cac-con-choi-nha-bong-06-08-2015-1-780x585.jpg', 'http://localhost:8080/LeThai/Laravel/project-tin/public/upload/_thumbs/Images/cac-con-choi-nha-bong-06-08-2015-1-780x585.jpg', 'anh 2', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(15, 'http://localhost:8080/LeThai/Laravel/project-tin/public/upload/images/g1.jpg', 'http://localhost:8080/LeThai/Laravel/project-tin/public/upload/_thumbs/Images/g1.jpg', 'anh 2', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -130,7 +259,7 @@ CREATE TABLE IF NOT EXISTS `tags` (
   `name` varchar(70) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `tags`
@@ -176,11 +305,29 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `creat
 --
 
 --
+-- Indexes for table `abouts`
+--
+ALTER TABLE `abouts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `category_post`
+--
+ALTER TABLE `category_post`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `cates`
 --
 ALTER TABLE `cates`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `cates_name_unique` (`name`);
+
+--
+-- Indexes for table `manufacturer`
+--
+ALTER TABLE `manufacturer`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `migrations`
@@ -203,6 +350,22 @@ ALTER TABLE `posts`
   ADD KEY `posts_user_id_foreign` (`user_id`);
 
 --
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `products_name_unique` (`name`),
+  ADD KEY `products_user_id_foreign` (`user_id`),
+  ADD KEY `products_cate_id_foreign` (`cate_id`);
+
+--
+-- Indexes for table `product_images`
+--
+ALTER TABLE `product_images`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `product_images_product_id_foreign` (`product_id`);
+
+--
 -- Indexes for table `tags`
 --
 ALTER TABLE `tags`
@@ -220,25 +383,50 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `abouts`
+--
+ALTER TABLE `abouts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `category_post`
+--
+ALTER TABLE `category_post`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `cates`
 --
 ALTER TABLE `cates`
   MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
 --
+-- AUTO_INCREMENT for table `manufacturer`
+--
+ALTER TABLE `manufacturer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
   MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `product_images`
+--
+ALTER TABLE `product_images`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+--
 -- AUTO_INCREMENT for table `tags`
 --
 ALTER TABLE `tags`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=54;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=56;
 --
 -- AUTO_INCREMENT for table `users`
 --
@@ -253,6 +441,19 @@ ALTER TABLE `users`
 --
 ALTER TABLE `posts`
   ADD CONSTRAINT `posts_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `products_cate_id_foreign` FOREIGN KEY (`cate_id`) REFERENCES `cates` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `products_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `product_images`
+--
+ALTER TABLE `product_images`
+  ADD CONSTRAINT `product_images_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
