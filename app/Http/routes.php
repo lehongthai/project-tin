@@ -20,7 +20,7 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 /*get list post*/
-Route::group(['prefix' => 'admin'/*, 'middleware' => 'auth'*/], function (){
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
 	Route::group(['prefix' => 'post'], function () {
 		Route::get('list', ['as' => 'admin.post.list', 'uses' => 'PostController@getList']);
 		Route::get('add', ['as' => 'admin.post.getAdd', 'uses' => 'PostController@getAdd']);

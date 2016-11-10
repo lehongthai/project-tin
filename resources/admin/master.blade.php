@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Khóa Học Lập Trình Laravel Framework 5.x Tại Khoa Phạm">
     <meta name="author" content="Vu Quoc Tuan">
-    <title>public/admin - Khoa Phạm</title>
+    <title>Admin - Khoa Phạm</title>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <!-- Bootstrap Core CSS -->
     <link href="{!! url('public/admin') !!}/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -56,7 +56,19 @@
             <ul class="nav navbar-top-links navbar-right">
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="{!! route('admin.user.profile') !!}"><i class="fa fa-user fa-fw"></i>{!! Auth::user()->username !!}</a>
+                        </li>
+                        <li><a href="{!! route('admin.change.password') !!}"><i class="fa fa-gear fa-fw"></i>Change password</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="{!! url('auth/logout') !!}"><i class="fa fa-sign-out fa-fw"></i>Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
                 </li>
                 <!-- /.dropdown -->
             </ul>
@@ -80,7 +92,7 @@
                             <a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Danh Mục Sản Phẩm<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Category<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{!! URL::route('admin.cate.list') !!}">List Category</a>
@@ -92,34 +104,43 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Bài Viết<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-cube fa-fw"></i> Product<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{!! URL::route('admin.post.list') !!}">Danh Sách</a>
+                                    <a href="{!! URL::route('admin.product.list') !!}">List Product</a>
                                 </li>
                                 <li>
-                                    <a href="{!! URL::route('admin.post.getAdd') !!}">Thêm Mới</a>
-                                </li>
-                                <li>
-                                    <a href="{!! URL::route('admin.catepost.list') !!}">Danh Mục</a>
+                                    <a href="{!! URL::route('admin.product.getAdd') !!}">Add Product</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-cube fa-fw"></i>Sản Phẩm<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-users fa-fw"></i> User<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{!! URL::route('admin.product.list') !!}">Danh Sách</a>
+                                    <a href="{!! URL::route('admin.user.list') !!}">List User</a>
                                 </li>
                                 <li>
-                                    <a href="{!! URL::route('admin.product.getAdd') !!}">Thêm Mới</a>
+                                    <a href="{!! URL::route('admin.user.getAdd') !!}">Add User</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="{!! URL::route('admin.tags.list') !!}"><i class="fa fa-users fa-fw"></i> Tags</a>
+                        </li>
+                        <li>
+                            <a href="{!! URL::route('admin.customer.list') !!}"><i class="fa fa-users fa-fw"></i> Khách Hàng</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-cube fa-fw"></i>Thống Kê<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{!! URL::route('admin.analytic.getSale') !!}">Sản Phẩm Bán Nhiều</a>
                                 </li>
                                 <li>
-                                    <a href="{!! URL::route('admin.tags.list') !!}">Thẻ</a>
-                                </li>
-                                <li>
-                                    <a href="{!! URL::route('admin.manufacturer.list') !!}">Nhà Sản Xuất</a>
+                                    <a href="{!! URL::route('admin.analytic.getMoney') !!}">Tổng Tiền</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -128,15 +149,14 @@
                             <a href="#"><i class="fa fa-cube fa-fw"></i>About<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{!! URL::route('admin.about.getList') !!}">SEO</a>
+                                    <a href="{!! URL::route('admin.footer.getList') !!}">Danh sách</a>
                                 </li>
                                 <li>
-                                    <a href="{!! URL::route('admin.about.getListShop') !!}">Shop Location</a>
+                                    <a href="{!! URL::route('admin.footer.getAdd') !!}">Thêm mới</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -195,9 +215,6 @@
     <script src="{!! url('public/admin') !!}/js/select2.min.js"></script>
 <script type="text/javascript">
     $("#product_select").select2({
-        tags:true
-    });
-    $("#manufacturer_select").select2({
         tags:true
     });
 
